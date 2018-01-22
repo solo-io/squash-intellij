@@ -1,3 +1,4 @@
+
 package io.solo.squash;
 
 import com.intellij.openapi.application.ApplicationManager;
@@ -15,7 +16,6 @@ import io.solo.squash.model.*;
 import io.solo.squash.system.KubectlHelper;
 import io.solo.squash.system.SquashHelper;
 import io.solo.squash.ui.Helper;
-import org.jetbrains.annotations.Debugger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
