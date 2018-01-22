@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3fb94bce-e0c9-4b73-97d7-8ae68175938e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/io/solo/squash/DebugTarget.java" afterPath="$PROJECT_DIR$/src/io/solo/squash/DebugTarget.java" />
+      <change beforePath="$PROJECT_DIR$/resources/META-INF/plugin.xml" afterPath="$PROJECT_DIR$/resources/META-INF/plugin.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +15,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DebugTarget.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DebugTarget.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/solo/squash/DebugTarget.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -24,6 +24,16 @@
                 <element signature="e#946#947#0" expanded="true" />
                 <element signature="e#973#974#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/META-INF/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,7 +83,6 @@
         <option value="$PROJECT_DIR$/src/io/solo/squash/ui/ApplicationConfigGUI.form" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/ui/ApplicationConfigGUI.java" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/config/ApplicationConfigController.java" />
-        <option value="$PROJECT_DIR$/resources/META-INF/plugin.xml" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/JavaDebugRunner.java" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/model/KubePods.java" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/model/KubeMetadata.java" />
@@ -106,6 +115,7 @@
         <option value="$PROJECT_DIR$/src/io/solo/squash/config/ProjectConfig.java" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/system/SquashHelper.java" />
         <option value="$PROJECT_DIR$/src/io/solo/squash/DebugTarget.java" />
+        <option value="$PROJECT_DIR$/resources/META-INF/plugin.xml" />
       </list>
     </option>
   </component>
@@ -375,6 +385,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="230" y="28" width="2330" height="1418" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -762,25 +773,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/META-INF/plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/solo/squash/debugger/JavaDebugger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding>
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-            <element signature="e#1637#1638#0" expanded="true" />
-            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="false" />
+            <element signature="e#985#986#0" expanded="false" />
+            <element signature="e#1473#1474#0" expanded="false" />
+            <element signature="e#1537#1538#0" expanded="false" />
+            <element signature="e#1637#1638#0" expanded="false" />
+            <element signature="e#1664#1665#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -806,11 +809,11 @@
         <state relative-caret-position="270">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#452#453#0" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#380#381#0" expanded="false" />
+            <element signature="e#422#423#0" expanded="false" />
+            <element signature="e#452#453#0" expanded="false" />
+            <element signature="e#516#517#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -873,7 +876,7 @@
         <state relative-caret-position="333">
           <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -883,7 +886,7 @@
         <state relative-caret-position="820">
           <caret line="126" column="5" lean-forward="true" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -893,8 +896,8 @@
         <state relative-caret-position="225">
           <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding>
-            <element signature="e#1732#1733#0" expanded="true" />
-            <element signature="e#1764#1765#0" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="false" />
+            <element signature="e#1764#1765#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -904,14 +907,14 @@
         <state relative-caret-position="345">
           <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#1248#1249#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1394#1395#0" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-            <element signature="e#1498#1499#0" expanded="true" />
-            <element signature="e#1532#1533#0" expanded="true" />
+            <element signature="e#1248#1249#0" expanded="false" />
+            <element signature="e#1285#1286#0" expanded="false" />
+            <element signature="e#1342#1343#0" expanded="false" />
+            <element signature="e#1394#1395#0" expanded="false" />
+            <element signature="e#1434#1435#0" expanded="false" />
+            <element signature="e#1465#1466#0" expanded="false" />
+            <element signature="e#1498#1499#0" expanded="false" />
+            <element signature="e#1532#1533#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -932,6 +935,14 @@
             <element signature="e#946#947#0" expanded="true" />
             <element signature="e#973#974#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/META-INF/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

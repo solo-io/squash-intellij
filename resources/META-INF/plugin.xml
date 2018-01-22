@@ -1,17 +1,16 @@
 <idea-plugin>
   <id>io.solo.squash.intellij</id>
-  <name>Squash Debugger</name>
+  <name>Squash Debugger Extension</name>
   <version>1.0</version>
-  <vendor email="support@solo.io" url="http://www.solo.io">YourCompany</vendor>
+  <vendor email="support@solo.io" url="http://www.solo.io">Solo.io</vendor>
 
   <description><![CDATA[
-      Squash Debugger Plugin<br>
-      <em>It is cool, trust me</em>
+      <em>Debug your microservices application from IntelliJ</em>
     ]]></description>
 
   <change-notes><![CDATA[
       Initial version<br>
-      <em>Yeah</em>
+      <em>Support for Java projects on Kubernetes platform</em>
     ]]>
   </change-notes>
 
