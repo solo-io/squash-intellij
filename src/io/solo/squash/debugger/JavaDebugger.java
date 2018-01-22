@@ -16,7 +16,22 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class JavaDebugRunner extends GenericDebuggerRunner {
+
+public class JavaDebugger implements IDebugger {
+
+    @Override
+    public String getName() {
+        return "java";
+    }
+
+    @Override
+    public void startDebugging(Project project, String host, String port) throws Exception {
+        JavaDebugRunner runner = new JavaDebugRunner(host, port);
+        runner.execute(project);
+    }
+}
+
+class JavaDebugRunner extends GenericDebuggerRunner {
     private String jdwpPort;
     private String jdwpHost;
 

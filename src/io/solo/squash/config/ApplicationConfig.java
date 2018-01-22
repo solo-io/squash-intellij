@@ -3,6 +3,7 @@ package io.solo.squash.config;
 import com.intellij.openapi.components.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import io.solo.squash.debugger.Debuggers;
 import org.jetbrains.annotations.Nullable;
 
 @State(
@@ -15,6 +16,9 @@ public class ApplicationConfig implements PersistentStateComponent<ApplicationCo
     String kubectlProxy;
     String squashPath;
     String squashUrl;
+
+    @com.intellij.util.xmlb.annotations.Transient
+    Debuggers debuggers = Debuggers.Init();
 
     @Nullable
     @Override
@@ -62,5 +66,9 @@ public class ApplicationConfig implements PersistentStateComponent<ApplicationCo
 
     public void setSquashUrl(String squashUrl) {
         this.squashUrl = squashUrl;
+    }
+
+    public Debuggers getDebuggers() {
+        return debuggers;
     }
 }

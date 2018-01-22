@@ -13,6 +13,8 @@ import java.util.Collection;
 
 public class SquashHelper {
 
+    static final int DefRequestTimeout = 60;
+
     public static String runSquash(Collection<String> args) throws Exception {
         ArrayList<String> cmds = new ArrayList<>(args.size() + 1);
         String url = ApplicationConfig.getInstance().getSquashUrl();
@@ -104,14 +106,23 @@ public class SquashHelper {
     }
 
 
-    public static String waitForDebugRequest(String debugId) throws Exception {
-        for(int i = 0; i < 10; i ++) {
+    public static String waitForDebugRequest(Project project, String debugId) throws Exception {
+
+        int timeout = ProjectConfig.getInstance(project).getRequestTimeout();
+
+        if(timeout < 10) {
+            timeout = DefRequestTimeout;
+        }
+
+        ProjectConfig.getInstance(project).setInWait(true);
+        for(int i = 0; i < timeout && ProjectConfig.getInstance(project).isInWait(); i ++) {
             SquashDebugRequest dr = listDebugRequests(debugId);
             if(dr != null && dr.status.debug_attachment_ref != null) {
                 return dr.status.debug_attachment_ref;
             }
             Thread.sleep(1000);
         }
+        ProjectConfig.getInstance(project).setInWait(false);
         return null;
     }
 }

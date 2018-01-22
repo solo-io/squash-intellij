@@ -13,6 +13,10 @@ public class ProjectConfig implements PersistentStateComponent<ProjectConfig> {
 
     String remotePath;
     String processName;
+    int requestTimeout;
+
+    @com.intellij.util.xmlb.annotations.Transient
+    boolean inWait = false;
 
     @Nullable
     @Override
@@ -44,5 +48,21 @@ public class ProjectConfig implements PersistentStateComponent<ProjectConfig> {
 
     public void setRemotePath(String remotePath) {
         this.remotePath = remotePath;
+    }
+
+    public int getRequestTimeout() {
+        return requestTimeout;
+    }
+
+    public void setRequestTimeout(int requestTimeout) {
+        this.requestTimeout = requestTimeout;
+    }
+
+    public void setInWait(boolean w) {
+        this.inWait = w;
+    }
+
+    public boolean isInWait() {
+        return this.inWait;
     }
 }

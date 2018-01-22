@@ -6,7 +6,7 @@ public class ProjectConfigGUI {
     private JPanel panelRoot;
     private JTextField textProcessName;
     private JTextField textRemotePath;
-    private JTextField textField3;
+    private JTextField textRequestTimeout;
 
     public JPanel getPanelRoot() {
         return panelRoot;
@@ -26,5 +26,19 @@ public class ProjectConfigGUI {
 
     public void setTextRemotePath(String textRemotePath) {
         this.textRemotePath.setText(textRemotePath);
+    }
+
+
+    public int getTextRequestTimeout() {
+        try {
+            return Integer.parseInt(textRequestTimeout.getText());
+        }
+        catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
+
+    public void setTextRequestTimeout(int textRequestTimeout) {
+        this.textRequestTimeout.setText(String.valueOf(textRequestTimeout));
     }
 }

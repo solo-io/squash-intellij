@@ -7,11 +7,15 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.SelectFromListDialog;
-import io.solo.squash.debugger.JavaDebugRunner;
+import io.solo.squash.config.ApplicationConfig;
+import io.solo.squash.config.ProjectConfig;
+import io.solo.squash.debugger.Debuggers;
+import io.solo.squash.debugger.IDebugger;
 import io.solo.squash.model.*;
 import io.solo.squash.system.KubectlHelper;
 import io.solo.squash.system.SquashHelper;
 import io.solo.squash.ui.Helper;
+import org.jetbrains.annotations.Debugger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -52,13 +56,18 @@ public class DebugTarget {
                 return;
             }
 
+            final IDebugger debugger = getDebugger(project);
+            if(debugger == null) {
+                return;
+            }
+
             ProgressManager.getInstance().run(new Task.Backgroundable(project, "Squash Debug Container") {
                 public void run(@NotNull ProgressIndicator progressIndicator) {
                     try {
                         progressIndicator.setText("Squash - Debug Container");
                         progressIndicator.setFraction(0.20);
 
-                        String dbgId = SquashHelper.requestAttachment(project, ctr.image, pod.metadata.namespace, pod.metadata.name, ctr.name, "java");
+                        String dbgId = SquashHelper.requestAttachment(project, ctr.image, pod.metadata.namespace, pod.metadata.name, ctr.name, debugger.getName());
                         if (dbgId == null) {
                             Log.error("Can't attach to container");
                             //Helper.showErrorMessage(project, "Cannot debug remote system", "Can't attach");
@@ -89,9 +98,7 @@ public class DebugTarget {
 
                                 try {
                                     Helper.showInfoMessage(project, "Debugging Remote", remote);
-
-                                    JavaDebugRunner runner = new JavaDebugRunner("127.0.0.1", port);
-                                    runner.execute(project);
+                                    debugger.startDebugging(project, "127.0.0.1", port);
                                 }
                                 catch(Exception ex) {
                                     Log.error(ex);
@@ -154,14 +161,19 @@ public class DebugTarget {
                 }
             }
 
-            String startdbgId = SquashHelper.debugRequest(project, image, "java");
+            final IDebugger debugger = getDebugger(project);
+            if(debugger == null) {
+                return;
+            }
+
+            String startdbgId = SquashHelper.debugRequest(project, image, debugger.getName());
 
             ProgressManager.getInstance().run(new Task.Backgroundable(project, "Squash Debug Request"){
                 public void run(@NotNull ProgressIndicator progressIndicator) {
                     try {
                         progressIndicator.setText("Squash - Debug Request");
                         progressIndicator.setFraction(0.20);
-                        String dbgId = SquashHelper.waitForDebugRequest(startdbgId);
+                        String dbgId = SquashHelper.waitForDebugRequest(project, startdbgId);
                         if(dbgId == null) {
                             Log.error("Timeout waiting for debug request");
                             throw new Exception("Timeout waiting for debug request");
@@ -190,9 +202,7 @@ public class DebugTarget {
                             public void run() {
                                 try {
                                     Helper.showInfoMessage(project, "Debugging Remote", remote);
-
-                                    JavaDebugRunner runner = new JavaDebugRunner("127.0.0.1", port);
-                                    runner.execute(project);
+                                    debugger.startDebugging(project, "127.0.0.1", port);
                                 }
                                 catch (Exception ex) {
                                     Log.error(ex);
@@ -219,8 +229,29 @@ public class DebugTarget {
     }
 
     public void detachDebugger() {
-        if(Helper.askConfirmation(project, "Stop Debugging", "Stop Debugging session?")) {
 
+        if(!ProjectConfig.getInstance(project).isInWait())
+            return;
+
+        if(Helper.askConfirmation(project, "Stop Debugging", "Stop Waiting for Debugging session?")) {
+            ProjectConfig.getInstance(project).setInWait(false);
         }
+    }
+
+    IDebugger getDebugger(Project project) {
+        Debuggers debuggers = ApplicationConfig.getInstance().getDebuggers();
+        IDebugger dbg = null;
+        if(debuggers.size() > 0) {
+            String dname = (String) Helper.showSelection(project, "Select a debugger", debuggers.list(), new SelectFromListDialog.ToStringAspect() {
+                @Override
+                public String getToStirng(Object o) {
+                    return (String)o;
+                }
+            });
+            if(dname != null) {
+                dbg = debuggers.get(dname);
+            }
+        }
+        return dbg;
     }
 }

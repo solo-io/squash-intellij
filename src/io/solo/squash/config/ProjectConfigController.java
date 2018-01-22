@@ -40,6 +40,7 @@ public class ProjectConfigController implements SearchableConfigurable {
         prjGui = new ProjectConfigGUI();
         prjGui.setTextProcessName(config.getProcessName());
         prjGui.setTextRemotePath(config.getRemotePath());
+        prjGui.setTextRequestTimeout(config.getRequestTimeout());
         return prjGui.getPanelRoot();
     }
 
@@ -52,5 +53,6 @@ public class ProjectConfigController implements SearchableConfigurable {
     public void apply() throws ConfigurationException {
         config.setProcessName(prjGui.getTextProcessName());
         config.setRemotePath(prjGui.getTextRemotePath());
+        config.setRequestTimeout(prjGui.getTextRequestTimeout());
     }
 }
