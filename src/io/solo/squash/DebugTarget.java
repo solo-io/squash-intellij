@@ -74,7 +74,7 @@ public class DebugTarget {
                             throw new Exception("Can't attach to container");
                         }
                         progressIndicator.setFraction(0.40);
-                        SquashDebugAttachment att = SquashHelper.waitForAttachment(dbgId);
+                        SquashDebugAttachment att = SquashHelper.waitForAttachment(project, dbgId);
 
                         if (att == null || att.status == null || !"attached".equals(att.status.state)) {
                             Log.error("Wait for attach failed");
@@ -180,7 +180,7 @@ public class DebugTarget {
                         }
 
                         progressIndicator.setFraction(0.40);
-                        SquashDebugAttachment att = SquashHelper.waitForAttachment(dbgId);
+                        SquashDebugAttachment att = SquashHelper.waitForAttachment(project, dbgId);
 
                         if (att == null || att.status == null || !"attached".equals(att.status.state)) {
                             Log.error("Wait for attach failed");

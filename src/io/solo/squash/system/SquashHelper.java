@@ -67,10 +67,24 @@ public class SquashHelper {
         return att.metadata.name;
     }
 
-    public static SquashDebugAttachment waitForAttachment(String debugId) throws Exception {
-        String res = runSquash(Arrays.asList("wait", debugId));
-        Gson gson = new Gson();
-        return gson.fromJson(res, SquashDebugAttachment.class);
+    public static SquashDebugAttachment waitForAttachment(Project project, String debugId) throws Exception {
+        int timeout = ProjectConfig.getInstance(project).getRequestTimeout();
+
+        if(timeout < 10) {
+            timeout = DefRequestTimeout;
+        }
+        ProjectConfig.getInstance(project).setInWait(true);
+        for(int i = 0; i < timeout && ProjectConfig.getInstance(project).isInWait(); i ++) {
+            String res = runSquash(Arrays.asList("wait", debugId));
+            Gson gson = new Gson();
+            SquashDebugAttachment att = gson.fromJson(res, SquashDebugAttachment.class);
+            if(att != null && att.status != null) {
+                if( "attached".equals(att.status.state) || "error".equals(att.status.state)) {
+                    return att;
+                }
+            }
+        }
+        return null;
     }
 
     public static String debugRequest(Project project,
