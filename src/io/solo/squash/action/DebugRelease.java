@@ -9,7 +9,7 @@ import io.solo.squash.ui.Helper;
 public class DebugRelease extends AnAction {
 
     public DebugRelease() {
-        super("Squash: Release Debug Session");
+        super("Squash: Stop Waiting for Debug Session");
     }
 
     @Override

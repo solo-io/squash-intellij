@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>io.solo.squash.intellij</id>
   <name>Squash Debugger Extension</name>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <vendor email="support@solo.io" url="http://www.solo.io">Solo.io</vendor>
 
   <description><![CDATA[
@@ -9,6 +9,8 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      1.0.1<br>
+      <em>Wait for Attachment now retries for specified amount of time</em><br>
       Initial version<br>
       <em>Support for Java projects on Kubernetes platform</em>
     ]]>
